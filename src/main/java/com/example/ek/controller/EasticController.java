@@ -3,10 +3,9 @@ package com.example.ek.controller;
 import com.example.ek.entity.Customer;
 import com.example.ek.service.elasticservice;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/v1/api")
@@ -17,8 +16,8 @@ public class EasticController {
 
 
     @GetMapping("/message")
-   public Customer displaydata(@RequestBody int customerId)
+   public List<Customer> displaydata(@RequestParam String customer_id)
    {
-      return  elasticservice.findCustomerById(customerId);
+       return elasticservice.findCustomerById(customer_id);
    }
 }
